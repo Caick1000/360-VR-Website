@@ -1,0 +1,16 @@
+// Helpers
+@import './Helpers/_mixins.scss';
+@import './Helpers/_parameters.scss';
+@import './Helpers/_functions.scss';
+
+// Pages
+@import './Pages/_home.scss';
+
+// Layouts
+@import './Layouts/_responsive.scss';
+
+// Components
+@import './Components/_buttons.scss';
+@import './Components/_cards.scss';
+@import './Components/_carousel.scss';
+@import './Components/_header.scss';

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,700i,900');
+
+$base__font-size: 14 !default;
+$base__line: 20 !default;
+
+$text__family: 'Lato', 'sans-serif';
+
+$margin__primary: 12px;
+
+$scaleFactor: 1.5;
+$tileWidth: 300px;
+$tileHeight: ($tileWidth / (16/9));
+
+$moveLeft: -($tileWidth * ($scaleFactor - 1) / 2);
+$moveRight: $tileWidth * ($scaleFactor - 1);

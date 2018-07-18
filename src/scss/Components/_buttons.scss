@@ -1,0 +1,12 @@
+.btn {
+  padding: 12px 6px;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}

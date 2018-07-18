@@ -1,0 +1,156 @@
+@mixin centerer($top: 50%, $left: 50%, $x: -50%, $y: -50%) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate($x, $y);;
+}
+
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex-direction($value: row) {
+    @if $value == row-reverse {
+      -webkit-box-direction: reverse;
+      -webkit-box-orient: horizontal;
+      -moz-box-direction: reverse;
+      -moz-box-orient: horizontal;
+    } @else if $value == column {
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      -moz-box-direction: normal;
+      -moz-box-orient: vertical;
+    } @else if $value == column-reverse {
+      -webkit-box-direction: reverse;
+      -webkit-box-orient: vertical;
+      -moz-box-direction: reverse;
+      -moz-box-orient: vertical;
+    } @else {
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -moz-box-direction: normal;
+      -moz-box-orient: horizontal;
+    }
+    -webkit-flex-direction: $value;
+    -ms-flex-direction: $value;
+    flex-direction: $value;
+  }
+
+  @mixin flex-flow($values: (row nowrap)) {
+    -webkit-flex-flow: $values;
+    -ms-flex-flow: $values;
+    flex-flow: $values;
+  }
+  
+  @mixin justify-content($value: flex-start) {
+    @if $value == flex-start {
+      -webkit-box-pack: start;
+      -moz-box-pack: start;
+      -ms-flex-pack: start;
+    } @else if $value == flex-end {
+      -webkit-box-pack: end;
+      -moz-box-pack: end;
+      -ms-flex-pack: end;
+    } @else if $value == space-between {
+      -webkit-box-pack: justify;
+      -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+    } @else if $value == space-around {
+      -ms-flex-pack: distribute;
+    } @else {
+      -webkit-box-pack: $value;
+      -moz-box-pack: $value;
+      -ms-flex-pack: $value;
+    }
+    -webkit-justify-content: $value;
+    justify-content: $value;
+  }
+
+  @mixin align-items($value: stretch) {
+    @if $value == flex-start {
+      -webkit-box-align: start;
+      -moz-box-align: start;
+      -ms-flex-align: start;
+    } @else if $value == flex-end {
+      -webkit-box-align: end;
+      -moz-box-align: end;
+      -ms-flex-align: end;
+    } @else {
+      -webkit-box-align: $value;
+      -moz-box-align: $value;
+      -ms-flex-align: $value;
+    }
+    -webkit-align-items: $value;
+    align-items: $value;
+  }
+
+  @mixin align-self($value: auto) {
+    // No Webkit Box Fallback.
+    -webkit-align-self: $value;
+    @if $value == flex-start {
+      -ms-flex-item-align: start;
+    } @else if $value == flex-end {
+      -ms-flex-item-align: end;
+    } @else {
+      -ms-flex-item-align: $value;
+    }
+    align-self: $value;
+  }
+
+  @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+      -webkit-box-shadow:inset $top $left $blur $color;
+      -moz-box-shadow:inset $top $left $blur $color;
+      box-shadow:inset $top $left $blur $color;
+    } @else {
+      -webkit-box-shadow: $top $left $blur $color;
+      -moz-box-shadow: $top $left $blur $color;
+      box-shadow: $top $left $blur $color;
+    }
+  }
+
+  @mixin background($size:cover, $repeat: no-repeat) {
+    background-size: $size;
+    background-repeat: $repeat;
+  }
+
+  @mixin transition($prop: ease, $time: .2s) {
+    -webkit-transition: $prop, $time;
+    -moz-transition: $prop, $time;
+    -ms-transition: $prop, $time;
+    -o-transition: $prop, $time;
+    transition: $prop, $time;
+  }
+
+  @mixin width_height($width: 100%, $height: 100%) {
+    width: $width;
+    height: $height;
+  }
+
+  @mixin text($size, $line: $base__line, $margin: 0, $family: $text__family, $color: $color__primary, $weight: normal) {
+    font-size: em($size);
+    line-height: ($line/$size);
+    font-family: $family;
+    color: $color;
+    margin-bottom: em($margin, $size);
+    font-weight: $weight;
+  }
+
+  // @mixin keyframes($name) {
+  //   @-webkit-keyframes #{$name} {
+  //     @content; 
+  //   }
+  //   @-moz-keyframes #{$name} {
+  //     @content;
+  //   }
+  //   @-ms-keyframes #{$name} {
+  //     @content;
+  //   }
+  //   @keyframes #{$name} {
+  //     @content;
+  //   } 
+  // }
