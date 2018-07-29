@@ -13,40 +13,32 @@
 <body>
 
 <div class="container">
-	<nav class="header">
-		<nav class="nav">
-			<ul>
-				<li class="nav__item"><a href="#">Home</a></li>
-				<li class="nav__item"><a href="#">Test</a></li>
-				<li class="nav__item"><a href="#">Test</a></li>
-			</ul>
-		</nav>
-	</nav>
+
+	<sidebar class="sidebar">
+		<ul class="menu">
+			<li class="menu__item"><a href="">Menu 1</a></li>
+			<li class="menu__item"><a href="">Menu 2</a></li>
+			<li class="menu__item"><a href="">Menu 3</a></li>
+			<li class="menu__item"><a href="">Menu 4</a></li>
+			<li class="menu__item"><a href="">Menu 5</a></li>
+			<li class="menu__item"><a href="">Menu 6</a></li>
+		</ul>
+	</sidebar>
 
 	<div class="slider__controls">
-	<article class="slider dragscroll">
-
-			<!-- <div class="video">
-				<div class="video__image">
-					<img src="https://source.unsplash.com/random/380x200" alt="">
-				</div>
-				<div class="video__legend">
-					<h3>Título do vídeo</h3>
-					<a href="">upvote</a>
-					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum autem ducimus id?</p>
-				</div>
-			</div> -->
-		
+	<article class="slider">
+			<div class="arrow arrow--left">Left</div>
+			<div class="arrow arrow--right">Right</div>		
 	</article>
-		<div class="arrow arrow--left">Left</div>
-		<div class="arrow arrow--right">Right</div>
 	</div>
 
 </div>
 
 <!-- build:js js/main.min.js -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery.transit/jquery.transit.js"></script>
 <script src="js/dragscroll.js"></script>
+<script src="js/Video.js"></script>
 <script src="js/bundle.js"></script>
 <!-- endbuild -->
 </body>

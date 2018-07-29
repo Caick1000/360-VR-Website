@@ -1,31 +1,19 @@
 .slider {
   overflow: hidden;
   width: 100%;
-  height: 220px;
+  height: 260px;
   position: relative;
+  margin-top: 40px;
   @include flexbox();
 
   .video {
     position: relative;
     display: inline-block;
     transition: .5s;
-    transform-origin: center left;
     width: $tileWidth;
     height: $tileHeight;
     margin: 0 2px;
-
-    // &:hover {
-    //   transform: scale($scaleFactor);
-
-    //   ~ .video {
-    //     transform: translateX($moveRight);
-    //   }
-
-    //   .video__legend {
-    //     opacity: 1;
-    //   }
-
-    // }
+    margin-top: 45px;
 
     img {
       object-fit: cover;
@@ -41,7 +29,7 @@
       padding: 10px 20px;
       width: 100%;
       opacity: 0;
-      transition: .5s;
+      transition: .4s;
 
       h3 {
         color: #fff;
@@ -67,11 +55,9 @@
     }
   }
 
-  
-
   &__controls {
     position: relative;
-    width: 100vw;
+    width: calc(100vw - 260px); // - sidebar
 
     .arrow {
       z-index: 2;

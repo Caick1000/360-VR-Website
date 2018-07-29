@@ -12,4 +12,4 @@ $tileWidth: 300px;
 $tileHeight: ($tileWidth / (16/9));
 
 $moveLeft: -($tileWidth * ($scaleFactor - 1) / 2);
-$moveRight: $tileWidth * ($scaleFactor - 1);
+$moveRight: ($tileWidth * ($scaleFactor - 1) / 2);

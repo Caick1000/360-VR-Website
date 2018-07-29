@@ -1,3 +1,12 @@
 body {
-  background: #0e0e0e;
+  background: #191919;
+  padding-top: 0.1px;
+}
+
+// Solve collapsing margins
+.container {
+  height: 100%;
+  padding-top: 0.1px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
