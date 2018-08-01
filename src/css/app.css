@@ -126,7 +126,7 @@ body {
   text-decoration: none;
 }
 
-.sidebar .menu li:hover a {
+.sidebar .menu li a :hover {
   text-decoration: underline;
   transition: .2s;
 }

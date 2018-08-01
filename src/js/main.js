@@ -66,7 +66,12 @@ function mouseIn() {
 		} else if (i > currentId) {
 			moveX('#video--'+i+'', 'translateX('+video.moveRight+'px)');
 
-		}
+		} 
+		// else if (currentId == 1) {
+		// 	$('#video--'+i+'').animate({marginLeft:video.moveRight + 30}, 0);
+		// } else if (currentId == $('.video').length) {
+		// 	$('#video--'+i+'').css('margin-right', video.moveRight + 60);
+		// }
 
 		scale($(this), 1.5);
 	}
@@ -81,6 +86,8 @@ function mouseOut() {
 	// const video2 = new Video(1.5, $(this).width());
 
 	moveX('.video', 0);
+	$('.video').css('margin-right', '2px');
+	$('.video').css('margin-left', '2px');
 	changeOpacity('1', '.video');
 	toggleVideoLegend('.video__legend', '0');
 }
