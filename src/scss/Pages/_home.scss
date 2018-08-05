@@ -7,6 +7,10 @@ body {
 .container {
   height: 100%;
   padding-top: 0.1px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  // display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+}
+
+.content {
+  margin-left: 200px;
 }

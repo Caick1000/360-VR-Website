@@ -1,6 +1,36 @@
-.sidebar {
+.nav {
+  display: inline-block;
   width: 200px;
+  height: 100%;
   background: #111111;
+  float: left;
+  position: fixed;
+  @include box-shadow(1px, 0px, 6px, 3px, rgba(0, 0, 0, 0.5));
+  // @include flexbox();
+  // @include flex-direction(column);
+  // @include justify-content(space-between);
+
+  .profile {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+    margin-top: 30px;
+
+    &__img  {
+      background-image: url('https://source.unsplash.com/random/');
+      background-size: cover;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: $margin__primary;
+    }
+
+    &__name {
+      color: $txtColor__secondary;
+      font-weight: light;
+      font-size: em(12);
+    }
+  }
 
   .menu {
     text-align: center;
@@ -10,15 +40,67 @@
       transition: .2s;
 
       a {
-        color: #fff;
+        color: $txtColor__primary;
         text-decoration: none;
+        display: inline-block;
         
-        &:hover {
-          text-decoration: underline;
-          transition: .2s;
+        &::after {
+          content: '';
+          width: 0px;
+          height: 1px;
+          display: block;
+          background: #fff;
+          transition: 300ms;
+        }
+
+        &:hover::after {
+          width: 100%;
         }
       }
 
+    }
+  }
+
+  .sideMenu {
+    position: relative;
+    text-align: center;
+    background-color: #000;
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    padding: 12px 0;
+
+    ul {
+      li {
+        padding: 6px 0;
+        a {
+          color: $txtColor__secondary;
+          font-size: em(12);
+          text-decoration: none;
+
+          &::after {
+            content: '';
+            width: 0px;
+            height: 1px;
+            display: block;
+            background: #fff;
+            transition: 300ms;
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &::before {
+      content: '';
+      height: 1px;
+      background: #666;
+      width: 60%;
+      position: absolute;
+      top: 0;
     }
   }
 }

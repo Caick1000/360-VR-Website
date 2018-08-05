@@ -6,13 +6,18 @@
   margin-top: 40px;
   @include flexbox();
 
+  &__container {
+    display: inline-block;
+    margin-left: 40px;
+  }
+
   .video {
     position: relative;
     display: inline-block;
     transition: .5s;
     width: $tileWidth;
     height: $tileHeight;
-    margin: 0 2px;
+    margin: 0 3px;
     margin-top: 45px;
 
     img {
@@ -74,5 +79,13 @@
         right: 0;
       }
     }
+  }
+
+  &__title {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: $txtColor__primary;
+    font-weight: 300;
   }
 }
