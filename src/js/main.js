@@ -2,16 +2,20 @@
 
 $(document).ready( () => {
 
-$('.arrow').click( () => {
-	let box = $('.slider');
+$('.arrow img').click( (e) => {
+	console.log(e.target);
+	let parent = e.target.closest('.slider').classList[1];
+	let box = $('.'+parent+'');
 	let x;
-	if ($(this).hasClass('arrow--right')) {
-		x = (box.width() / 2.246) + box.scrollLeft() + 4; // '4' based on video spacing in px
+	if ($(e.target.parentElement).hasClass('arrow--right')) {
+		console.log('right');
+		x = (box.width() / 2.246) + box.scrollLeft() + 6; // '6' based on video spacing in px
 		box.animate({
 			scrollLeft: x,
 		});
 	} else {
-		x = (box.width() / 2.246) - box.scrollLeft() + 4;
+		console.log('left');
+		x = (box.width() / 2.246) - box.scrollLeft() + 6;
 		box.animate({
 			scrollLeft: -x,
 		});
@@ -26,7 +30,7 @@ function createVideo({ id, title, description, rating }) {
 	const slideContent = `
 	<div class="video" id="video--${id}">
 		<div class="video__image">
-			<img src="https://source.unsplash.com/random/380x200" alt="">
+			<img src="https://source.unsplash.com/random?sig=${id}" alt="">
 		</div>
 		<div class="video__legend">
 			<h3>${title}</h3>
@@ -74,30 +78,31 @@ function mouseIn(e) {
 		else if (currentId == 1) {
 			$(this).css('transform-origin', 'left');
 			$(this).animate({marginRight: video.moveRight+2}, 0);
-			
+
 		} else if (currentId == $('.'+parent+' .video').nextAll().length+1) {
 			$(this).css('transform-origin', 'right');
-			$(this).animate({marginLeft: video.moveRight+2}, 0);
-			console.log($(this));
+			// $(this).animate({marginRight: -video.moveRight-2}, 0);
 		}
 		scale($(this), 1.5);
 	}
 
-	$('.video').css('opacity', 0.5);
+	$('.'+parent+' .video').css('opacity', 0.5);
 	changeOpacity('1', $(this));
-
+	changeOpacity('0', '.'+parent+' .arrow')
 	toggleVideoLegend($(this).find('.video__legend'), '1');
 	// }, delay);
 }
 
-function mouseOut() {
+function mouseOut(e) {
+	let parent = e.target.closest('.slider').classList[1];
+
 	scale($('.video'), 1.5);
-	// const video2 = new Video(1.5, $(this).width());
 	clearTimeout(timeOut);
 	moveX('.video', 0);
 	$('.video').css('margin-right', '3px');
-	$('.video').css('margin-left', '3px');
+	$('.video:first').css('margin-left', '0');
 	changeOpacity('1', '.video');
+	changeOpacity('1', '.'+parent+' .arrow');
 	toggleVideoLegend('.video__legend', '0');
 }
 
