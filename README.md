@@ -5,7 +5,7 @@
 
 #### **How to install/run**
 1. Clone this repository `git clone https://github.com/PatrickRNG/360-VR-Website/`
-2. Run `cd 360-VR-Website`
+2. Run `cd 360-VR-Website` (Project root folder, that contains the package.json file)
 3. Run `npm install` (if there is a npm update, run `npm install npm` first)
 4. Run `npm run dev` (if the project is using any API, run on live server, it will not work on localhost)
 5. Install Extension [Live Server](https://www.npmjs.com/package/live-server) on Visual Studio Code and run it.
