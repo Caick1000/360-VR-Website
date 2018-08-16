@@ -129,7 +129,7 @@ function showVideo({ id, title, description, rating }) {
 	</div>
 	`
 
-	// $(parent).append(slideContent);
+	$(parent).append(slideContent);
 
 }
 

@@ -306,10 +306,11 @@ html * {
 
 .nav .menu {
   text-align: center;
+  margin-top: 40px;
 }
 
 .nav .menu li {
-  padding: 30px 0;
+  padding: 20px 0;
   transition: .2s;
 }
 
@@ -333,7 +334,10 @@ html * {
 }
 
 .nav .sideMenu {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
   text-align: center;
   background-color: #000;
   display: -webkit-box;
