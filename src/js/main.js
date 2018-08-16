@@ -132,6 +132,10 @@ function showVideo({ id, title, description, rating }) {
 
 }
 
+$('.video').click(() => {
+	window.location = 'fullVideo.html';
+});
+
 function changeOpacity(op, el) {
 	$(el).css('opacity', op);
 }
