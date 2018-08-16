@@ -35,7 +35,7 @@ function createVideo({ id, title, description, rating }) {
 		</div>
 		<div class="video__legend">
 			<h3>${title}</h3>
-			<a href="">upvote - ${rating}</a>
+			<a href="">upvote: ${rating}</a>
 			<p>${description}</p>
 		</div>
 	</div>
@@ -56,13 +56,14 @@ for (let [key, value] of entries(videos)) {
 	createVideo(value);
 }
 
-const delay = 1000;
+const delay = 200;
 let timeOut;
 
 $('.video').hover(mouseIn, mouseOut);
+$('.video').on('click', showVideo);
 
 function mouseIn(e) {
-	// timeOut = setTimeout(() => {
+	timeOut = setTimeout(() => {
 	const video = new Video(1.5, $(this).width());
 	let id = ($(this)[0].id);
 	let parent = e.target.closest('.slider').classList[1];
@@ -70,48 +71,73 @@ function mouseIn(e) {
 	for (let i = 1; i < $('.'+parent+' .video').length+1; i++) {
 		let currentId = Number(id.match(/\d$/)[0]);
 		if (i < currentId) {
-			moveX('.'+parent+' #video--'+i+'', 'translateX('+video.moveLeft+'px)');
+			transform('.'+parent+' #video--'+i+'', 'translateX('+video.moveLeft+'px) scale(1)');
 
 		} else if (i > currentId) {
-			moveX('.'+parent+' #video--'+i+'', 'translateX('+video.moveRight+'px)');
+			transform('.'+parent+' #video--'+i+'', 'translateX('+video.moveRight+'px) scale(1)');
 
-		}
-		else if (currentId == 1) {
+		} else if (currentId == 1) {
 			$(this).css('transform-origin', 'left');
 			$(this).animate({marginRight: video.moveRight+2}, 0);
 
 		} else if (currentId == $('.'+parent+' .video').nextAll().length+1) {
 			$(this).css('transform-origin', 'right');
 			// $(this).animate({marginRight: -video.moveRight-2}, 0);
-		}
-		scale($(this), 1.5);
-	}
+		} 
 
-	$('.'+parent+' .video').css('opacity', 0.5);
+		transform($(this), 'translateX(0px) scale(1.5)');
+	}
+	
+	// scale($(this), 1.5);
+
+	changeOpacity('0.5', '.'+parent+' .video');
 	changeOpacity('1', $(this));
-	changeOpacity('0', '.'+parent+' .arrow')
+	changeOpacity('0', '.'+parent+' .arrow');
 	toggleVideoLegend($(this).find('.video__legend'), '1');
-	// }, delay);
+	}, delay);
 }
 
 function mouseOut(e) {
 	let parent = e.target.closest('.slider').classList[1];
 
-	scale($('.video'), 1.5);
+	setTimeout(() => {
+		transform('.video', 'translateX(0) scale(1)');
+	}, delay);
 	clearTimeout(timeOut);
-	moveX('.video', 0);
+	
 	$('.video').css('margin-right', '3px');
 	$('.video:first').css('margin-left', '0');
+
 	changeOpacity('1', '.video');
 	changeOpacity('1', '.'+parent+' .arrow');
 	toggleVideoLegend('.video__legend', '0');
+}
+
+function showVideo({ id, title, description, rating }) {
+	let parent = $(this).closest('.slider__controls')[0];
+	console.log(parent);
+	const slideContent = `
+	<div class="slider__big" id="big--${id}">
+		<div class="video__image">
+			<img src="https://source.unsplash.com/random?sig=${id}" alt="">
+		</div>
+		<div class="video__legend">
+			<h3>${title}</h3>
+			<a href="">upvote: ${rating}</a>
+			<p>${description}</p>
+		</div>
+	</div>
+	`
+
+	// $(parent).append(slideContent);
+
 }
 
 function changeOpacity(op, el) {
 	$(el).css('opacity', op);
 }
 
-function moveX(el, x) {
+function transform(el, x) {
 	$(el).css({ transform: x });
 }
 
@@ -126,7 +152,7 @@ function toggleVideoLegend(el, opacity) {
 },{"../videos.json":2}],2:[function(require,module,exports){
 module.exports={
   "videos": [
-    {       
+    {
       "id" : "1",
       "title" : "Filme 1",
       "description" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum autem ducimus id?",

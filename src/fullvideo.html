@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- build:css css/app.min.css -->
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/app.css">
+	<!-- endbuild -->
+	<title>VR 360</title>
+</head>
+<body>
+
+  <div class="container container__fullVideo">
+
+    <nav class="nav">
+      <div class="profile">
+        <div class="profile__img"></div>
+        <p class="profile__name">Patrick Passarella</p>
+      </div>
+      <ul class="menu">
+        <li class="menu__item"><a href="">Home</a></li>
+        <li class="menu__item"><a href="">Popular</a></li>
+        <li class="menu__item"><a href="">New</a></li>
+        <li class="menu__item"><a href="">Movies</a></li>
+        <li class="menu__item"><a href="">Sports</a></li>
+        <li class="menu__item"><a href="">Concerts</a></li>
+      </ul>
+      <div class="sideMenu">
+        <ul>
+          <li class="sideMenu__item"><a href="">Logout</a></li>
+          <li class="sideMenu__item"><a href="">Settings</a></li>
+          <li class="sideMenu__item"><a href="">Support</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="content">
+      <div class="fullVideo">
+          <iframe src="https://www.youtube.com/embed/b_SPwOOGkyk?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </div>
+
+<!-- build:js js/main.min.js -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/jquery.transit/jquery.transit.js"></script>
+<script src="js/dragscroll.js"></script>
+<script src="js/Video.js"></script>
+<script src="js/bundle.js"></script>
+<!-- endbuild -->
+</body>
+</html>

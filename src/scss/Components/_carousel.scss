@@ -72,6 +72,7 @@
     position: relative;
     width: calc(100vw - 260px); // - sidebar
     height: 200px;
+    margin-bottom: em(-20);
 
     .arrow {
       z-index: 2;
@@ -105,4 +106,63 @@
     color: $txtColor__primary;
     font-weight: 300;
   }
+
+  &__big {
+    height: 60vh;
+    width: 100%;
+    padding: em(75) em(20) em(20) em(50);
+    background: #050505;
+
+    &__title {
+      font-weight: 400;
+      font-size: em(30);
+      color: #fff;
+      
+      span {
+        margin-left: em(12);
+        color: #fff;
+        font-weight: normal;
+        font-size: 14px;
+      }
+    }
+
+    &__description {
+      color: $txtColor__primary;
+      font-weight: 300;
+      margin-bottom: em(36);
+      margin-top: em(6);
+    }
+
+    &__buttons {
+      .btn__watch {
+        margin-right: em(26);
+        position: relative;
+        overflow: hidden;
+        font-weight: 400;
+
+        &:hover {
+          a {
+            color: #fff;
+          }
+        }
+
+        a {
+          transition: .25s ease-in-out;
+          position: relative;
+          text-decoration: none;
+          color: #000;
+        }
+      }
+
+      .btn__review {
+        &:hover {
+          border-color: #818181;
+        }
+      }
+    }
+  }
+}
+
+.scale {
+  transform: scale(1.5);
 }

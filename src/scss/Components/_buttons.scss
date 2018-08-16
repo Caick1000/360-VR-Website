@@ -1,12 +1,49 @@
 .btn {
-  padding: 12px 6px;
-  background: #fff;
-  color: #000;
-  text-align: center;
-  border: none;
-  cursor: pointer;
+    background: #fff;
+    height: 32px;
+    width: 126px;
+    line-height: 30px;
+    color: #000;
+    text-align: center;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: all .2s;
+    text-decoration: none;
+    font-weight: 300;
+    overflow: hidden;
 
   &:focus {
     outline: none;
+  }
+
+  &--radius {
+    border-radius: 2rem;
+  }
+
+  &--transparent {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+  }
+
+  &:before {
+    transform: translate(-101%, -30%) translateZ(0);
+  }
+  &:hover:before {
+    transform: translate(-45%,-34%) translateZ(0);
+  }
+}
+
+.btn__bg {
+  &:before {
+    content: '';
+    display: block;
+    background: #000;
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    transition: .2s cubic-bezier(0.4, 0.0, 1, 1);
   }
 }

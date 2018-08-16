@@ -1,5 +1,4 @@
 .nav {
-  display: inline-block;
   width: 200px;
   height: 100%;
   background: #111111;
@@ -77,18 +76,10 @@
           color: $txtColor__secondary;
           font-size: em(12);
           text-decoration: none;
+          transition: all 150ms ease-in-out;
 
-          &::after {
-            content: '';
-            width: 0px;
-            height: 1px;
-            display: block;
-            background: #fff;
-            transition: 300ms;
-          }
-
-          &:hover::after {
-            width: 100%;
+          &:hover {
+            color: $txtColor--hover;
           }
         }
       }
