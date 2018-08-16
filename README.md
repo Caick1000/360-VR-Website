@@ -11,9 +11,9 @@
 5. Install Extension [Live Server](https://www.npmjs.com/package/live-server) on Visual Studio Code and run it.
 
 #### **Branchs**
-For now there is only a `dev` and `master` branch, soon we will be using [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) as our workflow.
-`DEV` - For development (features, adjustment, fixes, etc).
-`MASTER` - For production, a release.
+For now there is only a `dev` and `master` branch, soon we will be using [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) as our workflow.  
+`DEV` - For development (features, adjustment, fixes, etc).  
+`MASTER` - For production, a release.  
 
 #### **Improvements**
 If you want to contribute to the project, just clone the repo, make the changes and send a pull request.
