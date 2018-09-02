@@ -111,7 +111,8 @@
     height: 60vh;
     width: 100%;
     padding: em(75) em(20) em(20) em(50);
-    background: #050505;
+    background-size: cover !important;
+    margin-top: 20px;
 
     &__title {
       font-weight: 400;
@@ -127,7 +128,7 @@
     }
 
     &__description {
-      color: $txtColor__primary;
+      color: $color__white;
       font-weight: 300;
       margin-bottom: em(36);
       margin-top: em(6);

@@ -3,18 +3,15 @@
 $(document).ready( () => {
 
 $('.arrow img').click( (e) => {
-	console.log(e.target);
 	let parent = e.target.closest('.slider').classList[1];
 	let box = $('.'+parent+'');
 	let x;
 	if ($(e.target.parentElement).hasClass('arrow--right')) {
-		console.log('right');
 		x = (box.width() / 2.246) + box.scrollLeft() + 6; // '6' based on video spacing in px
 		box.animate({
 			scrollLeft: x,
 		});
 	} else {
-		console.log('left');
 		x = (box.width() / 2.246) - box.scrollLeft() + 6;
 		box.animate({
 			scrollLeft: -x,
@@ -34,7 +31,7 @@ function createVideo({ id, title, description, rating }) {
 		</div>
 		<div class="video__legend">
 			<h3>${title}</h3>
-			<a href="">upvote: ${rating}</a>
+			<a href="#">upvote: ${rating}</a>
 			<p>${description}</p>
 		</div>
 	</div>
@@ -56,10 +53,13 @@ for (let [key, value] of entries(videos)) {
 }
 
 const delay = 200;
+const delayBig = 3000;
 let timeOut;
+let timeOutBig;
 
 $('.video').hover(mouseIn, mouseOut);
-$('.video').on('click', showVideo);
+$('.video').hover(mouseInBig, mouseOutBig);
+// $('.video').on('click', showVideo);
 
 function mouseIn(e) {
 	timeOut = setTimeout(() => {
@@ -98,38 +98,56 @@ function mouseIn(e) {
 
 function mouseOut(e) {
 	let parent = e.target.closest('.slider').classList[1];
-
+	
+	clearTimeout(timeOut);
 	setTimeout(() => {
 		transform('.video', 'translateX(0) scale(1)');
+		
+		$('.video').css('margin-right', '3px');
+		$('.video:first').css('margin-left', '0');
+		
+		changeOpacity('1', '.video');
+		changeOpacity('1', '.'+parent+' .arrow');
+		toggleVideoLegend('.video__legend', '0');
 	}, delay);
-	clearTimeout(timeOut);
-	
-	$('.video').css('margin-right', '3px');
-	$('.video:first').css('margin-left', '0');
-
-	changeOpacity('1', '.video');
-	changeOpacity('1', '.'+parent+' .arrow');
-	toggleVideoLegend('.video__legend', '0');
 }
 
-function showVideo({ id, title, description, rating }) {
-	let parent = $(this).closest('.slider__controls')[0];
-	console.log(parent);
-	const slideContent = `
-	<div class="slider__big" id="big--${id}">
-		<div class="video__image">
-			<img src="https://source.unsplash.com/random?sig=${id}" alt="">
-		</div>
-		<div class="video__legend">
-			<h3>${title}</h3>
-			<a href="">upvote: ${rating}</a>
-			<p>${description}</p>
+function showVideo({ id, title, description, rating }, el) {
+	// let parent = $(this).closest('.slider__controls')[0];
+	// console.log(parent);
+	const slideContent = $(`
+	<div class="slider__big" style="background: linear-gradient(90deg, rgb(0, 0, 0) 1%, rgba(0, 0, 0, 0.65) 50%, rgba(255,255,255,0) 100%), url('https://source.unsplash.com/random?sig=${id}')" id="big--${id}">
+		<h2 class="slider__big__title">${title}<span class="slider__big__rating">Rating: ${rating}</span></h2>
+		<p class="slider__big__description">${description}</p>
+		<div class="slider__big__buttons">
+			<div class="btn__bg btn btn__watch">
+				<a href="#">Watch</a>
+			</div>
+			<a href="#" class="btn btn--transparent btn__review">Review</a>
 		</div>
 	</div>
-	`
+	`)[0];
+	el.after(slideContent);
 
-	// $(parent).append(slideContent);
+}
 
+function mouseInBig() {
+	let id = ($(this)[0].id);
+	let currentId = Number(id.match(/\d$/)[0]);
+
+	timeOutBig = setTimeout(() => {
+		for (let [key, value] of entries(videos)) {
+			if (value['id'] == currentId) {
+				showVideo(value, $(this).closest('.slider__controls')[0]);
+				console.log(value);
+			}
+		}
+	
+	}, delayBig);
+}
+
+function mouseOutBig() {
+	clearTimeout(timeOutBig);
 }
 
 $('.video').click(() => {
@@ -142,10 +160,6 @@ function changeOpacity(op, el) {
 
 function transform(el, x) {
 	$(el).css({ transform: x });
-}
-
-function scale(el, n) {
-	$(el).css({ scale: n });
 }
 
 function toggleVideoLegend(el, opacity) {

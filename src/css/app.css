@@ -210,7 +210,8 @@ html * {
   height: 60vh;
   width: 100%;
   padding: 5.35714em 1.42857em 1.42857em 3.57143em;
-  background: #050505;
+  background-size: cover !important;
+  margin-top: 20px;
 }
 
 .slider__big__title {
@@ -227,7 +228,7 @@ html * {
 }
 
 .slider__big__description {
-  color: #ececec;
+  color: #fff;
   font-weight: 300;
   margin-bottom: 2.57143em;
   margin-top: 0.42857em;
