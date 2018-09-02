@@ -132,6 +132,7 @@ function showVideo({ id, title, description, rating }, el) {
 
 }
 
+<<<<<<< HEAD
 function mouseInBig() {
 	let id = ($(this)[0].id);
 	let currentId = Number(id.match(/\d$/)[0]);
@@ -146,6 +147,9 @@ function mouseInBig() {
 	
 	}, delayBig);
 }
+=======
+	$(parent).append(slideContent);
+>>>>>>> 5241078e36fc0cf4d8a67bc091546b0605982d51
 
 function mouseOutBig() {
 	clearTimeout(timeOutBig);

@@ -127,6 +127,7 @@ function showVideo({ id, title, description, rating }, el) {
 		</div>
 	</div>
 	`)[0];
+	
 	el.after(slideContent);
 
 }
